@@ -10,7 +10,7 @@ using Random = UnityEngine.Random;
 /// Listの拡張クラス
 /// </summary>
 public static class ListExtension
-{ 
+{
 
     //=================================================================================
     //ループ取得
@@ -19,26 +19,20 @@ public static class ListExtension
     /// <summary>
     /// 指定したインデックスの値を範囲外参照せずに繰り返しで返す
     /// </summary>
-    public static T LoopElementAt<T>(this List<T> list, int index)
+    public static T LoopElementAt<T>(this IList<T> list, int index)
     {
         if (list.Count == 0) throw new ArgumentException("要素数が0のためアクセスできません");
-        
+
+        // 分配
+        index %= list.Count;
+
+        // 正の値にずらす
         if (index < 0)
         {
-            while (!list.CheckIndex(index))
-            {
-                index += list.Count;
-            }
-        }
-        else
-        {
-            while (!list.CheckIndex(index))
-            {
-                index -= list.Count;
-            }
+            index += list.Count;
         }
 
-        T target = list.ElementAt(index);
+        T target = list[index];
 
         return target;
     }
@@ -50,7 +44,7 @@ public static class ListExtension
     /// <summary>
     /// 不正アクセスの確認
     /// </summary>
-    public static bool CheckIndex<T>(this List<T> list,int index)
+    public static bool CheckIndex<T>(this IList<T> list,int index)
     {
         return index >= 0 && index <= list.Count - 1;
     }
