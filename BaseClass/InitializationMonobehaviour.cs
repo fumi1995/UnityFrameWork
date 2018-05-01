@@ -6,10 +6,10 @@
 
 namespace SubScripts.Base
 {
-    public class InitilaizationMonobehaviour : MonoBehaviour
+    public class InitializationMonobehaviour : MonoBehaviour
     {
         // 自動初期化呼出しフラグ
-        public bool IsAutoInitilized;
+        public bool IsAutoInitialized;
 
         // 初期化フラグ
         private bool _isInitialized;
@@ -32,7 +32,7 @@ namespace SubScripts.Base
         // 自動呼出し
         public virtual void Start ()
         {
-            if (IsAutoInitilized)
+            if (IsAutoInitialized)
             {
                 Initialization();
             }

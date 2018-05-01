@@ -6,7 +6,7 @@
 
 namespace SubScripts.Base
 {
-    public class SingletonMonobehaviour<T> : InitilaizationMonobehaviour where T: SingletonMonobehaviour<T>
+    public class SingletonMonobehaviour<T> : InitializationMonobehaviour where T: SingletonMonobehaviour<T>
     {
         private static T _instance;
 
